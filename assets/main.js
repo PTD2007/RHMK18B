@@ -501,7 +501,7 @@ window.initChuroi = function () {
   })();
 
   const DEFAULTS = {
-    anhNut: "./images/icon/mewmew.gif",
+    anhNut: "images/icon/mewmew.gif",
     titulo: "",
     frases: [
       " Như bông hoa tím, anh luôn ngưỡng mộ em",
@@ -522,7 +522,7 @@ window.initChuroi = function () {
       "images/anh/anh5.jpg"
     ],
     // Đường dẫn nhạc: chỉ cần sửa chỗ này (file mp3 của bạn)
-    musica: "cricle/image/nhac.mp3"
+    musica: "assets/nhac.mp3"
   };
   const CONFIG = DEFAULTS;
 
@@ -908,23 +908,8 @@ window.initChuroi = function () {
   function onUp(e) {
     if (!isPointerDown) return;
     isPointerDown = false;
-    // Click ngắn (không kéo) lên chữ/ảnh xoay → mở quả cầu ảnh
-    if (!pointerMoved && !(window.isSphereActive && window.isSphereActive())) {
-      const t = (e && e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : e;
-      const cx = t && t.clientX != null ? t.clientX : downClientX;
-      const cy = t && t.clientY != null ? t.clientY : downClientY;
-      const rect = renderer.domElement.getBoundingClientRect();
-      const mouse = new THREE.Vector2(
-        ((cx - rect.left) / rect.width) * 2 - 1,
-        -((cy - rect.top) / rect.height) * 2 + 1
-      );
-      const raycaster = new THREE.Raycaster();
-      raycaster.setFromCamera(mouse, camera);
-      const hits = raycaster.intersectObjects(textGroup.children.concat(photoGroup.children), false);
-      if (hits.length > 0) {
-        goToSphere();
-      }
-    }
+    // Không chuyển sang quả cầu khi bấm chữ/ảnh xoay —
+    // chỉ icon mèo (love-letter-btn) mới gọi goToSphere()
   }
 
   const domEl = renderer.domElement;

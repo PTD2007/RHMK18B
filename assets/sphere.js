@@ -229,8 +229,15 @@
     showSphere();
     transformSphere(objects, targets.sphere, 2000, sRenderer, sScene, sCamera);
 
-    sRenderer.domElement.addEventListener("click", function () {
-      if (isAnimating) return;
+    // Ảnh CSS3D không chặn touch — để xoay + tap nhận trên renderer
+    for (var ei = 0; ei < objects.length; ei++) {
+      if (objects[ei].element) {
+        objects[ei].element.style.pointerEvents = "none";
+      }
+    }
+
+    function advanceSphere() {
+      if (isAnimating || !sphereActive) return;
       isAnimating = true;
       sControls.enabled = false;
 
@@ -279,7 +286,60 @@
           })
           .start();
       }
-    });
+    }
+
+    // Tap (không kéo) trên mobile + desktop → bước tiếp theo
+    var tapDown = false;
+    var tapMoved = false;
+    var tapX = 0, tapY = 0;
+    var TAP_SLOP = 14; // px — dung sai ngón tay
+    var lastAdvanceAt = 0;
+
+    function onTapStart(e) {
+      if (!sphereActive || isAnimating) return;
+      var t = (e.touches && e.touches[0]) ? e.touches[0] : e;
+      if (!t || t.clientX == null) return;
+      tapDown = true;
+      tapMoved = false;
+      tapX = t.clientX;
+      tapY = t.clientY;
+    }
+    function onTapMove(e) {
+      if (!tapDown) return;
+      var t = (e.touches && e.touches[0]) ? e.touches[0] : e;
+      if (!t || t.clientX == null) return;
+      if (Math.abs(t.clientX - tapX) > TAP_SLOP || Math.abs(t.clientY - tapY) > TAP_SLOP) {
+        tapMoved = true;
+      }
+    }
+    function onTapEnd(e) {
+      if (!tapDown) return;
+      tapDown = false;
+      // Multi-touch (pinch) — bỏ qua
+      if (e.touches && e.touches.length > 0) return;
+      if (tapMoved) return;
+      // Chặn double-fire pointer + touch trên cùng 1 lần chạm
+      var now = Date.now();
+      if (now - lastAdvanceAt < 400) return;
+      lastAdvanceAt = now;
+      advanceSphere();
+    }
+
+    var sphereDom = sRenderer.domElement;
+    // Ưu tiên Pointer Events; fallback touch cho máy cũ
+    if (window.PointerEvent) {
+      sphereDom.addEventListener("pointerdown", onTapStart, { passive: true });
+      sphereDom.addEventListener("pointermove", onTapMove, { passive: true });
+      sphereDom.addEventListener("pointerup", onTapEnd, { passive: true });
+      sphereDom.addEventListener("pointercancel", function () { tapDown = false; }, { passive: true });
+    } else {
+      sphereDom.addEventListener("touchstart", onTapStart, { passive: true });
+      sphereDom.addEventListener("touchmove", onTapMove, { passive: true });
+      sphereDom.addEventListener("touchend", onTapEnd, { passive: true });
+      sphereDom.addEventListener("mousedown", onTapStart);
+      sphereDom.addEventListener("mousemove", onTapMove);
+      sphereDom.addEventListener("mouseup", onTapEnd);
+    }
 
     // Reset to sphere khi đóng thư
     window.resetToSphere = function () {
