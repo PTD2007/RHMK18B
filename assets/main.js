@@ -501,7 +501,7 @@ window.initChuroi = function () {
   })();
 
   const DEFAULTS = {
-    anhNut: "cricle/image/mewmew.gif",
+    anhNut: "./images/icon/mewmew.gif",
     titulo: "",
     frases: [
       " Như bông hoa tím, anh luôn ngưỡng mộ em",
