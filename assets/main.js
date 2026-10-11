@@ -522,7 +522,7 @@ window.initChuroi = function () {
       "images/anh/anh5.jpg"
     ],
     // Đường dẫn nhạc: chỉ cần sửa chỗ này (file mp3 của bạn)
-    musica: "assets/nhac.mp3"
+    musica: "./images/audio/nhac.mp3"
   };
   const CONFIG = DEFAULTS;
 
