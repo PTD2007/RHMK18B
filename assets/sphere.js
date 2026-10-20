@@ -9,13 +9,33 @@
   var sphereActive = false;
 
   var DEFAULT_IMAGES = [
-    "images/anh/anh1.jpg",
-      "images/anh/anh2.jpg",
-      "images/anh/anh3.jpg",
-      "images/anh/anh4.jpg",
-      "images/anh/anh5.jpg",
-      "images/anh/anh6.jpg",
-      "images/anh/anh7.jpg"
+   "images/anh/Chu Hải Anh.jpg",
+      "images/anh/Đặng Nhật Hạ.jpg",
+      "images/anh/Đỗ Khánh Huyền.jpg",
+      "images/anh/Đỗ Phương Thảo.jpg",
+      "images/anh/Đoàn Lan Hương.jpg",
+      "images/anh/Đoàn Thị Mai Loan.jpg",
+      "images/anh/Giang phương trang.jpg",
+      "images/anh/Lành Như Quỳnh.jpg",
+      "images/anh/Lê Thị Ngọc Linh.jpg",
+      "images/anh/Lê Trần Thảo Uyên.jpg",
+       "images/anh/Lương Tuệ Anh.jpg",
+      "images/anh/Lưu Thu Phương.jpg",
+      "images/anh/Mai Thị Bích Thuỷ.jpg",
+      "images/anh/Ngô Thị Khánh Ly.jpg",
+      "images/anh/Nguyễn Hoàng Phương Linh.jpg",
+      "images/anh/Nguyễn Ngọc Khánh.jpg",
+      "images/anh/Nguyễn Thu Huyền.jpg",
+      "images/anh/Nông Thanh Thảo.jpg",
+      "images/anh/Ome Seangchan.jpg",
+      "images/anh/Phạm Phương Anh.jpg",
+      "images/anh/Soukchay Phengvilay.jpg",
+      "images/anh/Trần Thanh Thảo.jpg",
+      "images/anh/Trần Thị Huyền Linh.jpg",
+      "images/anh/Trần Trà My.jpg",
+      "images/anh/Vũ Minh Phương.jpg",
+      "images/anh/Vũ Quỳnh Trang.jpg",
+      "images/anh/Nguyễn Văn Hoàng Anh.jpg",
   ];
 
   function normalizeImage(url, size) {

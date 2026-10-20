@@ -13,10 +13,9 @@
   var contentTimer = null;
   var openTimer = null;
 
-  var fallbackTitle = "Gửi em !";
+  var fallbackTitle = "Gửi các bạn nữ RHMK18B !";
   var fallbackMessage =
-    "Hôm nay là ngày 20/10 - ngày dành riêng cho những người con gái tuyệt vời nhất. Anh chỉ muốn nói rằng: Cảm ơn em vì đã đến bên anh, mang đến cho anh niềm vui, sự bình yên và những yêu thương ngọt ngào nhất. Dù có bao nhiêu 20/10 đi nữa, anh vẫn muốn là người đầu tiên được gửi lời chúc đến em 💗";
-
+    "Hôm nay là ngày 20/10 - ngày dành riêng cho những người con gái tuyệt vời nhất. Tớ chúc các bạn luôn vui vẻ, hạnh phúc, đạt được mọi điều mình mong muốn"
   window.showEnvelope = function () {
     if (envelopeOverlay) envelopeOverlay.classList.add("show");
     if (letterStage) {

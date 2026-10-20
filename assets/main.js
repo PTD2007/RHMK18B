@@ -19,10 +19,10 @@
   const gauss = () => (rnd() + rnd() + rnd() - 1.5) / 1.5;
 
   const LAYERS = [
-    { n: 8, off: 0,            L: 1.00, W: 0.30, curl:  0.06, w: 0.23, hue: 0, a: 0.85 },
-    { n: 8, off: Math.PI / 8,  L: 0.82, W: 0.27, curl: -0.05, w: 0.185, hue: 0, a: 0.8 },
-    { n: 8, off: 0,            L: 0.62, W: 0.22, curl:  0.05, w: 0.15, hue: 1, a: 0.95 },
-    { n: 5, off: Math.PI / 5,  L: 0.42, W: 0.17, curl: -0.04, w: 0.11, hue: 0, a: 1.0 }
+    { n: 8, off: 0, L: 1.00, W: 0.30, curl: 0.06, w: 0.23, hue: 0, a: 0.85 },
+    { n: 8, off: Math.PI / 8, L: 0.82, W: 0.27, curl: -0.05, w: 0.185, hue: 0, a: 0.8 },
+    { n: 8, off: 0, L: 0.62, W: 0.22, curl: 0.05, w: 0.15, hue: 1, a: 0.95 },
+    { n: 5, off: Math.PI / 5, L: 0.42, W: 0.17, curl: -0.04, w: 0.11, hue: 0, a: 1.0 }
   ];
   const petalW = (u, Ww) => Ww * Math.pow(Math.sin(Math.PI * Math.pow(u, 0.7)), 0.9);
 
@@ -60,9 +60,9 @@
         const m = rnd();
         const mode = m < 0.62 ? 0 : m < 0.84 ? 1 : 2;
         [px, py] = petalPoint(Ly, mode);
-        if (mode === 0)      { h = Ly.hue; al = Ly.a * (0.6 + rnd() * 0.4); j = 0.0045; }
-        else if (mode === 1) { h = 1;      al = 0.10 + rnd() * 0.14;        j = 0.0; }
-        else                 { h = Ly.hue; al = 0.35 + rnd() * 0.3;         j = 0.003; }
+        if (mode === 0) { h = Ly.hue; al = Ly.a * (0.6 + rnd() * 0.4); j = 0.0045; }
+        else if (mode === 1) { h = 1; al = 0.10 + rnd() * 0.14; j = 0.0; }
+        else { h = Ly.hue; al = 0.35 + rnd() * 0.3; j = 0.003; }
       } else if (g < 0.735) {
         const th = rnd() * TAU, r = 0.18 + Math.pow(rnd(), 1.6) * 0.55;
         px = Math.cos(th) * r; py = Math.sin(th) * r;
@@ -160,7 +160,7 @@
   let canSecondClick = false; // chặn click lọt từ lần 1
   const COLORS = ["rgba(236,228,255,", "rgba(170,120,255,", "rgba(255,236,170,"];
   const easeOut = t => 1 - (1 - t) * (1 - t);
-  const easeIn  = t => t * t;
+  const easeIn = t => t * t;
 
   function startBurst() {
     galaxyFade = true;
@@ -201,7 +201,7 @@
       audio.currentTime = 0;
       audio.loop = true; // lặp lại
       const p = audio.play();
-      if (p && typeof p.catch === "function") p.catch(function () {});
+      if (p && typeof p.catch === "function") p.catch(function () { });
     }
 
     setTimeout(() => {
@@ -327,7 +327,7 @@ window.initKhung = function () {
   var $ = function (id) { return document.getElementById(id) };
 
   var CONFIG = {
-    n1: "Anh", n2: "Em",
+    n1: "RHM", n2: "K18B",
     date: "2026-10-20",
     t1: "",
     t2: "Happy Woman's Day",
@@ -496,7 +496,7 @@ window.initChuroi = function () {
     a.loop = true;
     if (a.paused) {
       var p = a.play();
-      if (p && typeof p.catch === "function") p.catch(function () {});
+      if (p && typeof p.catch === "function") p.catch(function () { });
     }
   })();
 
@@ -504,22 +504,44 @@ window.initChuroi = function () {
     anhNut: "images/icon/mewmew.gif",
     titulo: "",
     frases: [
-      " Như bông hoa tím, anh luôn ngưỡng mộ em",
-      " Cảm ơn em vì luôn là bình yên của anh",
-      " Ở bên em, điều giản dị cũng tỏa sáng",
-      " Hôm nay, sắc tím mang tên em",
-      " Bông hoa này nhắc nhở em tuyệt vời nhường nào",
-      " Tình cảm của em là nơi anh trân trọng nhất",
-      " 20 tháng 10, luôn bên em",
-      " Một đóa hoa tím cho người thắp sáng ngày của anh",
-      " Cảm ơn em vì đã luôn ở lại"
+      "Nhân ngày 20/10, chúc các cô gái lớp mình luôn vui vẻ, hạnh phúc và lúc nào cũng tràn đầy năng lượng. ",
+      "20/10 chúc các bạn nữ RHM học tốt, luôn rạng ngời!",
+      "Chúc phái đẹp RHM 20/10 luôn vui vẻ và hạnh phúc!",
+      "Chúc các bạn nữ RHM 20/10 luôn xinh đẹp, rạng rỡ!!",
+      "Nhân ngày 20/10, chúc các bạn nữ lớp mình luôn vui vẻ, hạnh phúc và lúc nào cũng tràn đầy năng lượng.",
+      "Chúc cô gái RHM 20/10 luôn rạng rỡ và thành công!",
+      "20/10 chúc bạn học tốt, lúc nào cũng hạnh phúc nhé!",
+   
     ],
     fotos: [
-      "images/anh/anh1.jpg",
-      "images/anh/anh2.jpg",
-      "images/anh/anh3.jpg",
-      "images/anh/anh4.jpg",
-      "images/anh/anh5.jpg"
+      "images/anh/Chu Hải Anh.jpg",
+      "images/anh/Đặng Nhật Hạ.jpg",
+      "images/anh/Đỗ Khánh Huyền.jpg",
+      "images/anh/Đỗ Phương Thảo.jpg",
+      "images/anh/Đoàn Lan Hương.jpg",
+      "images/anh/Đoàn Thị Mai Loan.jpg",
+      "images/anh/Giang phương trang.jpg",
+      "images/anh/Lành Như Quỳnh.jpg",
+      "images/anh/Lê Thị Ngọc Linh.jpg",
+      "images/anh/Lê Trần Thảo Uyên.jpg",
+       "images/anh/Lương Tuệ Anh.jpg",
+      "images/anh/Lưu Thu Phương.jpg",
+      "images/anh/Mai Thị Bích Thuỷ.jpg",
+      "images/anh/Ngô Thị Khánh Ly.jpg",
+      "images/anh/Nguyễn Hoàng Phương Linh.jpg",
+      "images/anh/Nguyễn Ngọc Khánh.jpg",
+      "images/anh/Nguyễn Thu Huyền.jpg",
+      "images/anh/Nông Thanh Thảo.jpg",
+      "images/anh/Ome Seangchan.jpg",
+      "images/anh/Phạm Phương Anh.jpg",
+      "images/anh/Soukchay Phengvilay.jpg",
+      "images/anh/Trần Thanh Thảo.jpg",
+      "images/anh/Trần Thị Huyền Linh.jpg",
+      "images/anh/Trần Trà My.jpg",
+      "images/anh/Vũ Minh Phương.jpg",
+      "images/anh/Vũ Quỳnh Trang.jpg",
+      "images/anh/Nguyễn Văn Hoàng Anh.jpg",
+
     ],
     // Đường dẫn nhạc: chỉ cần sửa chỗ này (file mp3 của bạn)
     musica: "./images/audio/nhac.mp3"
@@ -581,7 +603,7 @@ window.initChuroi = function () {
     a.loop = true;
     if (a.paused) {
       var p = a.play();
-      if (p && typeof p.catch === "function") p.catch(function () {});
+      if (p && typeof p.catch === "function") p.catch(function () { });
     }
   }
 
@@ -804,7 +826,7 @@ window.initChuroi = function () {
     }
   }
   if (document.fonts && document.fonts.load) {
-    document.fonts.load("40px 'Mali'").catch(function () {}).then(buildWords);
+    document.fonts.load("40px 'Mali'").catch(function () { }).then(buildWords);
   } else {
     setTimeout(buildWords, 200);
   }
